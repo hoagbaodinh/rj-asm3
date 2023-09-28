@@ -55,7 +55,7 @@ async function loadProduct() {
     let prds = resData.map((pd) => {
       return { ...pd, price: VND.format(pd.price).replace("₫", "VND") };
     });
-    console.log(prds);
+
     return prds;
   }
 }

@@ -3,7 +3,6 @@ import { Form, Link, NavLink, useRouteLoaderData } from "react-router-dom";
 const Navbar = () => {
   const currentUser = useRouteLoaderData("root");
 
-  console.log(currentUser);
   return (
     <header className="header">
       <div className="container">

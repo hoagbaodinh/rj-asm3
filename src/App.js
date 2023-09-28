@@ -51,7 +51,6 @@ function App() {
   // Lấy cart từ store
   const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
-  console.log(cart);
 
   useEffect(() => {
     // Lấy dữ liệu cart từ localStorage
