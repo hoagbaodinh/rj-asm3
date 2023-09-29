@@ -1,11 +1,13 @@
 import { useDispatch } from "react-redux";
 import { cartActions } from "../../store";
 import formatPrice from "../../util/format-price";
-
+import { motion } from "framer-motion";
 const CartItem = (props) => {
   const { image, title, quantity, totalPrice, price, id } = props.item;
   const fmPrice = formatPrice(price);
   const formatTotalPrice = formatPrice(totalPrice);
+
+  // Dispatch redux
   const dispatch = useDispatch();
 
   // Thêm 1 item vào cart item
@@ -16,6 +18,7 @@ const CartItem = (props) => {
         image,
         title,
         price,
+        quantity: 1,
       })
     );
   };
@@ -30,7 +33,17 @@ const CartItem = (props) => {
     dispatch(cartActions.deleteItemFormCart(id));
   };
   return (
-    <>
+    <motion.div
+      variants={{
+        hidden: { opacity: 0, y: -10 },
+        visible: { opacity: 1, y: 0 },
+      }}
+      initial="hidden"
+      animate="visible"
+      exit="hidden"
+      open
+      className="cartGrid"
+    >
       {/* Image */}
       <div className="cartGridItem cartItemImg">
         <img src={image} alt="cart item" />
@@ -53,14 +66,11 @@ const CartItem = (props) => {
       <div className="cartGridItem  cartItemPrice">{formatTotalPrice}</div>
       {/* Remove Item */}
       <div className="cartGridItem  cartItemRemove">
-        <button
-          className="cartGridItem  cartItemRemoveBtn"
-          onClick={deleteItemHandler}
-        >
+        <button className="  cartItemRemoveBtn" onClick={deleteItemHandler}>
           <i className="fa-solid fa-trash-can"></i>
         </button>
       </div>
-    </>
+    </motion.div>
   );
 };
 

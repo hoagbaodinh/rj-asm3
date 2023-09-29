@@ -9,6 +9,7 @@ const Categories = () => {
   const navigate = useNavigate();
   const clickHandler = () => {
     navigate("/shop");
+    window.scrollTo(0, 0);
   };
 
   return (

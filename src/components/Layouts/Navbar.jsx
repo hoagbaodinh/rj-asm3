@@ -1,7 +1,12 @@
+import { useSelector } from "react-redux";
 import { Form, Link, NavLink, useRouteLoaderData } from "react-router-dom";
 
 const Navbar = () => {
+  // Lay du lieu currenUser ma root load
   const currentUser = useRouteLoaderData("root");
+
+  // Lay tong so luong item co trong cart qua redux
+  const totalQuantity = useSelector((state) => state.cart.totalQuantity);
 
   return (
     <header className="header">
@@ -48,7 +53,9 @@ const Navbar = () => {
                   }
                   end
                 >
-                  <i className="fa-solid fa-cart-flatbed"></i>
+                  <i className="fa-solid fa-cart-flatbed navCart ">
+                    <div className="navCartQuantity">{totalQuantity}</div>
+                  </i>
                   Cart
                 </NavLink>
               </li>
@@ -60,7 +67,7 @@ const Navbar = () => {
                   }
                   end
                 >
-                  <i className="fa-solid fa-user"></i>
+                  <i className="fa-solid fa-user "></i>
                   {currentUser ? currentUser.fullname : "Login"}
                   {currentUser && <i className="fa-solid fa-caret-down"></i>}
                 </NavLink>

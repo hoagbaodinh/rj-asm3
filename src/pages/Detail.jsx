@@ -7,6 +7,7 @@ import DetailDescription from "../components/DetailPage/DetailDescription";
 import RelatedPds from "../components/DetailPage/RelatedPds";
 
 const DetailPage = () => {
+  // Lay product co id trung voi tham so router
   const { product } = useLoaderData();
 
   return (
@@ -63,7 +64,7 @@ async function loadProducts() {
     let products = resData.map((pd) => {
       return { ...pd, price: VND.format(pd.price).replace("₫", "VND") };
     });
-    console.log(products);
+
     return products;
   }
 }
@@ -78,7 +79,7 @@ async function loadProduct(id) {
   } else {
     const resData = await response.json();
     const product = resData.find((pd) => pd._id.$oid === id);
-    console.log(product);
+
     return product;
   }
 }

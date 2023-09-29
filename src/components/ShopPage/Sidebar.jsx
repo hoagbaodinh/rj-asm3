@@ -1,12 +1,17 @@
 import { useDispatch, useSelector } from "react-redux";
 import { productListActions } from "../../store";
 
-const Sidebar = (props) => {
+const Sidebar = () => {
+  // Lay category tu productListSlice
   const category = useSelector((state) => state.productList.category);
+  // Dispatch
   const dispatch = useDispatch();
 
+  // Click
   const handleClick = (cate) => {
+    // Thay doi state voi muc vua click
     dispatch(productListActions.changeCate(cate));
+    window.scrollTo(0, 300);
   };
 
   return (

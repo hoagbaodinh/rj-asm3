@@ -1,8 +1,10 @@
 import { Suspense } from "react";
 import ProductItem from "./ProductItem";
 import { Await, defer, json, useLoaderData } from "react-router-dom";
+import formatPrice from "../../util/format-price";
 
 const Products = () => {
+  // Lay du lieu Products
   const { products } = useLoaderData();
 
   return (
@@ -48,12 +50,9 @@ async function loadProduct() {
     throw json({ message: "Could not fetch events." });
   } else {
     const resData = await response.json();
-    let VND = new Intl.NumberFormat("vi-VN", {
-      style: "currency",
-      currency: "VND",
-    });
+
     let prds = resData.map((pd) => {
-      return { ...pd, price: VND.format(pd.price).replace("₫", "VND") };
+      return { ...pd, price: formatPrice(pd.price) };
     });
 
     return prds;

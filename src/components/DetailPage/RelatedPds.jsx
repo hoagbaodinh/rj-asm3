@@ -3,6 +3,7 @@ import { Await, useLoaderData } from "react-router-dom";
 import RelatedPdsList from "./RelatedPdsList";
 
 const RelatedPds = ({ product }) => {
+  // Lay du lieu cua tat ca products
   const { products } = useLoaderData();
 
   return (

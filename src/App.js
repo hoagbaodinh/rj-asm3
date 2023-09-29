@@ -10,17 +10,20 @@ import CheckoutPage from "./pages/Checkout";
 import LoginPage from "./pages/Login";
 import RegisterPage from "./pages/Register";
 import RootPage, { currentUserLoader } from "./pages/Root";
+import ErrorPage from "./pages/Error";
 import { loader as productsLoader } from "./components/HomePage/Products";
 import { loader as pdDetailLoader } from "./pages/Detail";
 import { action as authAction } from "./components/AuthPage/AuthForm";
 import { action as logoutAction } from "./components/AuthPage/Logout";
 import { fetchCartData, sendCartData } from "./store/cart-actions";
 
+// Router v6
 const router = createBrowserRouter([
   {
     path: "/",
     element: <RootPage />,
     loader: currentUserLoader,
+    errorElement: <ErrorPage />,
     id: "root",
     children: [
       { index: true, element: <HomePage />, loader: productsLoader },

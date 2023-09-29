@@ -1,10 +1,11 @@
 import { useNavigate } from "react-router-dom";
 
 const RelatedPdsList = ({ products, product }) => {
+  // Lay tat ca product co category trung voi product dang xem
   const relatedProducts = products.filter(
     (pd) => pd.category === product.category
   );
-
+  // Chuyen huong den san pham duoc click
   const navigate = useNavigate();
   const handleClick = (pd) => {
     navigate(`/detail/${pd._id.$oid}`);

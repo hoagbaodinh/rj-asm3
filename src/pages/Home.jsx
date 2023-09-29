@@ -6,13 +6,18 @@ import Newsletter from "../components/HomePage/Newsletter";
 
 const HomePage = () => {
   return (
-    <>
+    <main>
+      {/* Banner */}
       <Banner />
+      {/* Categories */}
       <Categories />
+      {/* Danh sach product */}
       <Products />
+      {/* Dich vu */}
       <Service />
+      {/* Thu */}
       <Newsletter />
-    </>
+    </main>
   );
 };
 

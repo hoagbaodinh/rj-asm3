@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import CartItem from "./CartItem";
+import { AnimatePresence } from "framer-motion";
 
 const Cart = () => {
   // Lay danh sach item tu local storage
@@ -17,10 +18,13 @@ const Cart = () => {
         <div className="cartHeader ">total</div>
         <div className="cartHeader ">remove</div>
         {/* Items */}
+      </div>
+      {/* Animation cho item */}
+      <AnimatePresence>
         {cartItems.map((item) => (
           <CartItem key={item.id} item={item} />
         ))}
-      </div>
+      </AnimatePresence>
       {/* Actions */}
       <div className="cartActions">
         {/* Ve shopPage */}

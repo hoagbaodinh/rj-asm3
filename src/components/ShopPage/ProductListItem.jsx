@@ -6,8 +6,10 @@ const ProductListItem = ({ product }) => {
   const { name, price, img1, _id } = product;
   const navigate = useNavigate();
 
+  // Chuyen den trang product detail
   const handleClick = () => {
     navigate(`/detail/${_id.$oid}`);
+    window.scrollTo(0, 0);
   };
   return (
     <div className="col-4">

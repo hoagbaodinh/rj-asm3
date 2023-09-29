@@ -1,6 +1,7 @@
 import { Outlet } from "react-router-dom";
 import Navbar from "../components/Layouts/Navbar";
 import Footer from "../components/Layouts/Footer";
+import LiveChat from "../components/Layouts/LiveChat";
 
 const RootPage = () => {
   return (
@@ -10,6 +11,7 @@ const RootPage = () => {
         <Outlet />
       </main>
       <Footer />
+      <LiveChat />
     </>
   );
 };

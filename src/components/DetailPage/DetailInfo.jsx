@@ -3,16 +3,18 @@ import { cartActions } from "../../store/index";
 import { useDispatch } from "react-redux";
 import formatPrice from "../../util/format-price";
 
-let isInitial = true;
-
 const DetailInfo = ({ product }) => {
   const [quantityNum, setQuantityNum] = useState("1");
   const [inputValue, setInputValue] = useState("");
+  const [success, setSuccess] = useState(false);
+
   const dispatch = useDispatch();
   // Function format giá
   const price = formatPrice(product.price);
   // Thêm item vào cart theo số lượng
   const addItemToCartHandler = () => {
+    setSuccess(true);
+    //Them item vào cart theo so luong
     dispatch(
       cartActions.addItemToCart({
         id: product._id.$oid,
@@ -23,14 +25,16 @@ const DetailInfo = ({ product }) => {
       })
     );
   };
-
+  // Bat su kien inputValue thay thoi
   useEffect(() => {
-    if (isInitial) {
-      isInitial = false;
-      return;
-    }
-    setQuantityNum(inputValue);
+    if (inputValue === "") return;
+    else setQuantityNum(inputValue);
   }, [inputValue]);
+
+  // Neu product thay doi
+  useEffect(() => {
+    setSuccess(false);
+  }, [product]);
 
   return (
     <div className="detailInfo">
@@ -80,6 +84,12 @@ const DetailInfo = ({ product }) => {
           Add to cart
         </button>
       </div>
+      {/* Thong bao cho nguoi dung sau khi them vao kho hang */}
+      {success && (
+        <p style={{ color: "green", marginTop: "0.5rem" }}>
+          Add product to cart Successfully!
+        </p>
+      )}
     </div>
   );
 };

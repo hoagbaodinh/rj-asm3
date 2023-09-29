@@ -4,6 +4,7 @@ const DetailImgs = ({ product }) => {
   const imgs = [product.img1, product.img2, product.img3, product.img4];
   const [currentImg, setCurrentImg] = useState(product.img1);
 
+  //  thay doi hinh anh khi product thay doi
   useEffect(() => {
     setCurrentImg(product.img1);
   }, [product]);

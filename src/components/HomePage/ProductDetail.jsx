@@ -4,6 +4,7 @@ import Modal from "../Layouts/Modal";
 const ProductDetail = (props) => {
   const { name, price, img1, short_desc } = props.product;
   const navigate = useNavigate();
+  // Chuyen huong den ShopPage
   const handleClick = () => {
     navigate("/shop");
   };
@@ -26,6 +27,9 @@ const ProductDetail = (props) => {
             </div>
           </div>
         </div>
+        <button className="closeDetailBtn" onClick={props.onDone}>
+          <i className="fa-solid fa-xmark"></i>
+        </button>
       </div>
     </Modal>
   );
